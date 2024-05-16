@@ -1,0 +1,24 @@
+
+#title {
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 20px;
+}
+
+#login, #sign {
+    background-color: black;
+    color: white;
+    border: 2px solid #555;
+    border-radius: 5px;
+    margin-left: auto;
+}
+
+.main_m {
+    color: white;
+    text-align: center;
+}
+
+#logo {
+    margin: 10px auto; /* 수직 가운데 정렬 */
+    display: block; /* 가로 중앙 정렬 */
+    width: 100px;
+}
