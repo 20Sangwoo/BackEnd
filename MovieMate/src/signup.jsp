@@ -16,7 +16,7 @@
 	<img id="logo" src="logo.png" class="content-image">
 <div class="container">
     <h2>회원가입</h2>
-    <form action="/submit-login" method="post">
+    <form action="signuppro.jsp" method="post">
         <label for="id">닉네임</label>
         <input type="text" id="name" name="name" required>
 
@@ -27,7 +27,7 @@
         <input type="text" id="id" name="id" required>
 
         <label for="pwd">비밀번호</label>
-        <input type="password" id="pwd" name="pwd" required>
+        <input type="password" id="pwd" name="password" required>
 
 
         <input type="submit" value="회원가입" >
