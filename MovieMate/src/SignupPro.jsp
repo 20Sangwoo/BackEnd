@@ -1,5 +1,5 @@
-<%@page import="cs.dit.MemberDAO"%>
-<%@page import="cs.dit.MemberDTO"%>
+<%@page import="cs.MemberDAO"%>
+<%@page import="cs.MemberDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"
     import ="java.sql.*, javax.sql.*, javax.naming.*"%>
@@ -17,6 +17,5 @@
     MemberDAO dao = new MemberDAO(); // DAO 객체 호출
     dao.insert(dto); // DTO에 전달한 값을 DAO의 insert 메서드 실행에 사용
 	
-	//list.jsp로 이동하기
 	response.sendRedirect("main.jsp");
 %>
