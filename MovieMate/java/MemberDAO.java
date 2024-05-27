@@ -22,7 +22,7 @@ public class MemberDAO {
         
         Context initCtx = new InitialContext(); // JNDI 초기 컨텍스트 가져오기
         Context envCtx = (Context) initCtx.lookup("java:comp/env"); // 환경 컨텍스트로 이동
-        DataSource ds = (DataSource) envCtx.lookup("jdbc/jspdb"); // 데이터 소스 객체를 찾기
+        DataSource ds = (DataSource) envCtx.lookup("jdbc/hoyoung"); // 데이터 소스 객체를 찾기
         
         con = ds.getConnection(); // 데이터 소스에서 커넥션 객체 가져오기
         
