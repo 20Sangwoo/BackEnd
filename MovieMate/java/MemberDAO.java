@@ -22,33 +22,34 @@ public class MemberDAO {
         
         Context initCtx = new InitialContext(); // JNDI 초기 컨텍스트 가져오기
         Context envCtx = (Context) initCtx.lookup("java:comp/env"); // 환경 컨텍스트로 이동
-        DataSource ds = (DataSource) envCtx.lookup("jdbc/jsw"); // 데이터 소스 객체를 찾기
+        DataSource ds = (DataSource) envCtx.lookup("jdbc/jspdb"); // 데이터 소스 객체를 찾기
         
         con = ds.getConnection(); // 데이터 소스에서 커넥션 객체 가져오기
         
         return con; // 커넥션 객체 반환
     }
-
+//=============================================================================================================================
     // MemberDTO 객체를 받아서 데이터베이스에 저장하는 메서드
-    public void insert(MemberDTO dto) {
-        String sql = "INSERT INTO login(id, name, pwd) VALUES(?, ?, ?)";
+    public void createUser(MemberDTO dto) {
+        String sql = "INSERT INTO users(id, email, username, password) VALUES(?, ?, ?, ?)";
         
         try (Connection con = getConnection();
              PreparedStatement pstmt = con.prepareStatement(sql)) {
             pstmt.setString(1, dto.getId());
-            pstmt.setString(2, dto.getName());
-            pstmt.setString(3, dto.getPwd());
+            pstmt.setString(2, dto.getEmail());
+            pstmt.setString(3, dto.getUser());
+            pstmt.setString(4, dto.getPwd());
             
             pstmt.executeUpdate(); // 쿼리 실행하여 데이터베이스에 삽입
         } catch (Exception e) {
             e.printStackTrace();
         }
     }    
-    
+//-----------------------------------------------------------------------------------------------------------------------------
     // DB에 있는 데이터를 가져와서 MemberDTO 객체들을 리스트로 반환하는 메서드
     public ArrayList<MemberDTO> list() {
         ArrayList<MemberDTO> dtos = new ArrayList<MemberDTO>();
-        String sql = "SELECT * FROM login";
+        String sql = "SELECT * FROM users";
         
         try (Connection con = getConnection();
              Statement stmt = con.createStatement();
@@ -56,8 +57,9 @@ public class MemberDAO {
             while (rs.next()) {
                 MemberDTO dto = new MemberDTO(
                         rs.getString("id"),
-                        rs.getString("name"),
-                        rs.getString("pwd")
+                        rs.getString("email"),
+                        rs.getString("username"),
+                        rs.getString("password")
                 );
                 dtos.add(dto);
             }
@@ -67,11 +69,11 @@ public class MemberDAO {
         
         return dtos;
     }
-    
+//-----------------------------------------------------------------------------------------------------------------------------
     // 주어진 id에 해당하는 사용자의 정보를 반환하는 메서드
     public MemberDTO selectOne(String id) {
         MemberDTO dto = null;
-        String sql = "SELECT * FROM login WHERE id = ?";
+        String sql = "SELECT * FROM users WHERE id = ?";
         
         try (Connection con = getConnection();
              PreparedStatement pstmt = con.prepareStatement(sql)) {
@@ -79,7 +81,7 @@ public class MemberDAO {
             ResultSet rs = pstmt.executeQuery();
             
             if (rs.next()) {
-                dto = new MemberDTO(id, rs.getString("name"), rs.getString("pwd"));
+                dto = new MemberDTO(id, rs.getString("email"), rs.getString("username"), rs.getString("password"));
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -87,26 +89,27 @@ public class MemberDAO {
         
         return dto;
     }
-    
+//-----------------------------------------------------------------------------------------------------------------------------
     // 주어진 MemberDTO 객체의 정보로 사용자의 정보를 업데이트하는 메서드
-    public void update(MemberDTO dto) {
-        String sql = "UPDATE login SET name = ?, pwd = ? WHERE id = ?";
+    public void userUpdate(MemberDTO dto) {
+        String sql = "UPDATE users SET email = ?, username = ?, password = ? WHERE id = ?";
         
         try (Connection con = getConnection();
              PreparedStatement pstmt = con.prepareStatement(sql)) {
-            pstmt.setString(1, dto.getName());
-            pstmt.setString(2, dto.getPwd());
-            pstmt.setString(3, dto.getId());
+                pstmt.setString(1, dto.getEmail());
+            pstmt.setString(2, dto.getUser());
+            pstmt.setString(3, dto.getPwd());
+            pstmt.setString(4, dto.getId());
             
             pstmt.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
-    
+//----------------------------------------------------------------------------------------------------------------------------- 
     // 주어진 id에 해당하는 사용자의 정보를 삭제하는 메서드
     public void delete(String id) {
-        String sql = "DELETE FROM login WHERE id = ?";
+        String sql = "DELETE FROM users WHERE id = ?";
         
         try (Connection con = getConnection();
              PreparedStatement pstmt = con.prepareStatement(sql)) {
@@ -116,16 +119,16 @@ public class MemberDAO {
             e.printStackTrace();
         }
     }
-    
+//-----------------------------------------------------------------------------------------------------------------------------   
     // 주어진 id와 pwd로 사용자를 인증하는 메서드
     public boolean checkUser(String id, String pwd) {
-        String sql = "SELECT * FROM login WHERE id = ? AND pwd = ?";
+        String sql = "SELECT * FROM users WHERE id = ? AND password = ?";
         boolean isAuthenticated = false;
         
         try (Connection con = getConnection();
              PreparedStatement pstmt = con.prepareStatement(sql)) {
             pstmt.setString(1, id);
-            pstmt.setString(2, pwd);
+            pstmt.setString(2, password);
             ResultSet rs = pstmt.executeQuery();
             
             if (rs.next()) {
@@ -139,7 +142,6 @@ public class MemberDAO {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        
         return isAuthenticated;
     }
 }
