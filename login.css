@@ -1,0 +1,48 @@
+@charset "UTF-8";
+body {
+    background-color: black;
+    color: white; /* 텍스트 색상 흰색 */
+}
+
+.container {
+    width: 300px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid black;
+    border-radius: 5px;
+    
+}
+
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #36454F;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+input[type="submit"] {
+    width: 100%;
+    background-color: #8B0000;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+
+.checkbox {
+    margin-bottom: 16px;
+}
+
+.content-image {
+    display: block;
+    margin: 0 auto 20px; /* 이미지 아래에 여백 추가 */
+    max-width: 100px; /* 이미지 최대 너비 설정 (원하는 크기로 조절 가능) */
+}
+     
