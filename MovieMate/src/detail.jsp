@@ -29,7 +29,9 @@
 		<h1 class="text-center font-weight-bold">임시 게시판</h1><br>
 		<table class="table table-hover">
 			<tr>
-				<th>제목</th>
+				<th>제목 : <%= dto.getTitle() %></th>
+				<th>작성자 : <%= dto.getAuth()%></th>
+				<th>날짜 : <%= dto.getDate() %></th>
 			</tr>
 			<tr>
           		<td><%= dto.getDetail() %></td>

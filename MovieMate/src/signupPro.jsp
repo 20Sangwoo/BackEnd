@@ -16,5 +16,6 @@
     MemberDAO dao = new MemberDAO(); // DAO 객체 호출
     dao.createUser(dto); // DTO에 전달한 값을 DAO의 회원가입 메서드 실행에 사용
     
+    session.setAttribute("signupMessage", "회원가입이 완료되었습니다.");
     response.sendRedirect("main.jsp");
 %>

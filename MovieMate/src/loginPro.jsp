@@ -11,9 +11,11 @@
     if (isAuthenticated) {
         // 세션에 ID 저장
         session.setAttribute("id", id);
-        response.sendRedirect("main.jsp");
+        String contextPath = request.getContextPath();
+        response.sendRedirect(contextPath + "/main.jsp");
     } else {
         // 로그인 실패 시 처리
         request.setAttribute("errorMessage", "로그인 실패: 아이디 또는 비밀번호가 일치하지 않습니다.");
+        request.getRequestDispatcher("login.jsp").forward(request, response);
     }
 %> 
