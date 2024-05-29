@@ -9,6 +9,26 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script> 
     <link href="main.css" rel="stylesheet">
+     <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            document.getElementById("notice-link").addEventListener("click", function(event) {
+                event.preventDefault();
+                loadContent("list.jsp", "blackC");
+            });
+        });
+
+        function loadContent(url, containerId) {
+            const container = document.querySelector("." + containerId);
+            const xhr = new XMLHttpRequest();
+            xhr.open("GET", url, true);
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    container.innerHTML = xhr.responseText;
+                }
+            };
+            xhr.send();
+        }
+    </script>
 </head>
 <body>
 	<!-- 버튼 영역 -->
@@ -144,7 +164,7 @@
                 <li>
                     <a class="nav-link" href="#">게시판</a>
                     <ul class="submenu">
-                        <li><a href="#">공지사항</a></li>
+                        <li><a id="notice-link" href="#">공지사항</a></li>
                         <li><a href="#">Q&A</a></li>
                     </ul>  
                 </li>
