@@ -122,7 +122,7 @@ public class MemberDAO {
 //-----------------------------------------------------------------------------------------------------------------------------   
     // 주어진 id와 pwd로 사용자를 인증하는 메서드
     public boolean checkUser(String id, String pwd) {
-        String sql = "SELECT * FROM users WHERE id = ? AND pwd = ?";
+        String sql = "SELECT * FROM users WHERE id = ? AND password = ?";
         boolean isAuthenticated = false;
         
         try (Connection con = getConnection();
@@ -134,10 +134,8 @@ public class MemberDAO {
             if (rs.next()) {
                 // 로그인 성공
                 isAuthenticated = true;
-                System.out.println("로그인 성공");
             } else {
                 // 로그인 실패
-                System.out.println("로그인 실패: 아이디 또는 비밀번호가 일치하지 않습니다.");
             }
         } catch (Exception e) {
             e.printStackTrace();
