@@ -1,8 +1,3 @@
-<!--
-	작성자 : Ksm
-	작성일 : 2024. 5. 27.
-	 기능 : 
--->
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -14,10 +9,10 @@
 </head>
 <body>
 	  <img id="logo" src="logo.png" class="content-image">
-<div class="container"  >   <!--role="dialog" aria-labelledby="login" aria-hidden="true"-->
+<div class="container"  > 
     <h2>로그인</h2>
     
-    <form action="/submit-login" method="post">
+    <form action="loginPro.jsp" method="post">
         <label for="id">아이디</label>
         <input type="text" id="id" name="id" required>
 
@@ -36,6 +31,10 @@
 
         <input type="submit" value="로그인" >
     </form>
+    
+    <% if (request.getAttribute("errorMessage") != null) { %>
+        <p style="color:red;"><%= request.getAttribute("errorMessage") %></p>
+    <% } %>
 </div>
 </body>
 </html>
