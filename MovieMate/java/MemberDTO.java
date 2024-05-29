@@ -3,7 +3,7 @@
  * 작성일 : 2024. 5. 21.
  * 기능 : 사용자의 데이터를 저장하는 객체
  ============================*/
-package cs.dit;
+package cs;
 
 public class MemberDTO {
     // 멤버 변수 선언
@@ -33,12 +33,12 @@ public class MemberDTO {
     }
 
     // username 변수의 getter 메서드
-    public String getUsername() {
+    public String getUser() {
         return username;
     }
 
     // username 변수의 setter 메서드
-    public void setUsername(String username) {
+    public void setUser(String username) {
         this.username = username;
     }
 
@@ -49,7 +49,7 @@ public class MemberDTO {
 
     // name 변수의 setter 메서드
     public void setEmail(String email) {
-        this.eamil = email;
+        this.email = email;
     }
 
     // 생성자: 객체 생성 시 id, username, eamil, pwd를 초기화

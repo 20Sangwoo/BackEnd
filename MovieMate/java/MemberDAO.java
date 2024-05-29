@@ -1,9 +1,9 @@
 /**============================
  * 작성자 : whtk
  * 작성일 : 2024. 5. 21.
- * 기능 : Member 테이블 관련(insert, list, update, delete, select)
+ * 기능 : users 테이블 관련(insert, list, update, delete, select)
  ============================*/
-package cs.dit;
+package cs;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -22,7 +22,7 @@ public class MemberDAO {
         
         Context initCtx = new InitialContext(); // JNDI 초기 컨텍스트 가져오기
         Context envCtx = (Context) initCtx.lookup("java:comp/env"); // 환경 컨텍스트로 이동
-        DataSource ds = (DataSource) envCtx.lookup("jdbc/hoyoung"); // 데이터 소스 객체를 찾기
+        DataSource ds = (DataSource) envCtx.lookup("jdbc/jsw"); // 데이터 소스 객체를 찾기
         
         con = ds.getConnection(); // 데이터 소스에서 커넥션 객체 가져오기
         
@@ -122,13 +122,13 @@ public class MemberDAO {
 //-----------------------------------------------------------------------------------------------------------------------------   
     // 주어진 id와 pwd로 사용자를 인증하는 메서드
     public boolean checkUser(String id, String pwd) {
-        String sql = "SELECT * FROM users WHERE id = ? AND password = ?";
+        String sql = "SELECT * FROM users WHERE id = ? AND pwd = ?";
         boolean isAuthenticated = false;
         
         try (Connection con = getConnection();
              PreparedStatement pstmt = con.prepareStatement(sql)) {
             pstmt.setString(1, id);
-            pstmt.setString(2, password);
+            pstmt.setString(2, pwd);
             ResultSet rs = pstmt.executeQuery();
             
             if (rs.next()) {
@@ -142,6 +142,7 @@ public class MemberDAO {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        
         return isAuthenticated;
     }
 }
