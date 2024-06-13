@@ -15,15 +15,13 @@
         String contextPath = request.getContextPath();
         
         
-    	%>	
-    		<script>
-    		alert("환영합니다. 로그인에 성공했습니다!");
-        	</script>
-    	<%
         response.sendRedirect("welcome.jsp");
     } else {
-        // 로그인 실패 시 처리
-        request.setAttribute("errorMessage", "로그인 실패: 아이디 또는 비밀번호가 일치하지 않습니다.");
-        //request.getRequestDispatcher("login.jsp").forward(request, response);
+    	        // 로그인 실패 시 처리	%>
+        <script>
+            alert("로그인 실패: 아이디 또는 비밀번호가 일치하지 않습니다.");
+            window.location.href = "main.jsp";
+        </script>
+<%
     }
-%> 
+%>

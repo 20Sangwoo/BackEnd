@@ -2,13 +2,17 @@
 /*배경화면 색상 */
 .blackC {      
     background-color: black;
-    color: white; 
+    color: white;
 }
 /*========================================================================================= */
 
-/* h1안에 텍스트 */
+/* 텍스트 */
 .blackC h1 {
     text-align: center; /* 텍스트를 중앙 정렬 */
+}
+
+.blackC h3 {
+	text-align: center;
 }
 /*========================================================================================= */
 
@@ -146,6 +150,13 @@
     display: flex;
     align-items: center;
     gap: 10px;
+}
+
+.left-nav a {
+	color: white;
+    font-size: 20px;
+    font-weight: bold;
+    text-decoration: none;
 }
 
 /* 오른쪽 정렬 항목 */

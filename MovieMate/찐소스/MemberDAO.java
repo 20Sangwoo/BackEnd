@@ -130,7 +130,7 @@ public class MemberDAO {
             pstmt.setString(1, id);
             pstmt.setString(2, pwd);
             ResultSet rs = pstmt.executeQuery();
-            
+  
             if (rs.next()) {
                 // 로그인 성공
                 isAuthenticated = true;
