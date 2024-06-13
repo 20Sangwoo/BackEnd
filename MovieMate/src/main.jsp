@@ -45,15 +45,11 @@
 	<%
     String id = (String) session.getAttribute("id");
     String errorMessage = (String) request.getAttribute("errorMessage");
-
+ 
     if (id != null && !id.equals("")) {
         response.sendRedirect("main.jsp");
     } else {
 	%>
-		<script>
-    	alert("<%= errorMessage %>");
-		</script>
-	<% }%>
 	<div class="modal fade" id="loginModal">
     	<div class="modal-dialog">
         	<div class="modal-content">
@@ -84,6 +80,7 @@
         	</div>
     	</div>
 	</div>
+	<% }%>
 
 	<%
     // 세션에서 회원가입 메시지 가져오기
@@ -161,7 +158,7 @@
         </div>
         
         <!-- 로고 -->
-        <a class="nav-link" href="index.html"><img id="logo" src="./img/logo.png" alt="MovieMate 로고"></a>
+        <a class="nav-link" href="main.jsp"><img id="logo" src="./img/logo.png" alt="MovieMate 로고"></a>
         
         <!-- 오른쪽 메뉴 항목 -->
         <div class="right-nav">
