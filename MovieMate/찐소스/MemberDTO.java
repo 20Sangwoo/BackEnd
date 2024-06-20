@@ -53,11 +53,11 @@ public class MemberDTO {
     }
 
     // 생성자: 객체 생성 시 id, username, eamil, pwd를 초기화
-    public MemberDTO(String id, String username, String email, String pwd) {
+    public MemberDTO(String id, String email, String username, String pwd) {
         super(); // 상위 클래스의 생성자 호출 (일반적으로 Object 클래스)
         this.id = id;   // 전달받은 id 값을 멤버 변수 id에 저장
-        this.username = username; // 전달받은 username 값을 멤버 변수 username에 저장
         this.email = email; // 전달받은 email 값을 멤버 변수 email에 저장
+        this.username = username; // 전달받은 username 값을 멤버 변수 username에 저장
         this.pwd = pwd;   // 전달받은 pwd 값을 멤버 변수 pwd에 저장
     }
 }

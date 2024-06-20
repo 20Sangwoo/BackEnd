@@ -10,16 +10,32 @@
     <link href="main.css" rel="stylesheet">
 </head>
 <body>
-	<!-- 버튼 영역 -->
+	<%
+	 HttpSession sessions = request.getSession();
+     String id = (String) session.getAttribute("userId");
+    %>
 	<div id="auth-buttons">
-   		<button type="button" id="login" data-bs-toggle="modal" data-bs-target="#loginModal">
-   		 로그인
-    	</button>
-    	<button type="button" id="sign" data-bs-toggle="modal" data-bs-target="#signupModal">
-    	회원가입
-    	</button>
-	</div>
-	
+	    <!-- 버튼 영역 -->
+        <% if (id == null) { %>
+            <button type="button" id="login" data-bs-toggle="modal" data-bs-target="#loginModal">
+                로그인
+            </button>
+            <button type="button" id="sign" data-bs-toggle="modal" data-bs-target="#signupModal">
+                회원가입
+            </button>
+        <% } else { %>
+            <form action="logout.jsp" method="post">
+            <button type="submit" id="logout">
+                로그아웃
+            </button>
+        </form>
+            <button type="button" id="mypage" onclick="location.href='myPage.jsp'">
+                마이페이지
+            </button>
+        <% } %>
+     </div>
+    	
+    
 	<!-- 모달 영역 -->
 	<div class="modal fade" id="loginModal">
     	<div class="modal-dialog">
@@ -62,7 +78,7 @@
 	<%
     // 메시지 출력 후 세션에서 삭제
     session.removeAttribute("signupMessage");
-	}
+    }
 	%>
 	<div class="modal fade" id="signupModal">
     	<div class="modal-dialog">
@@ -135,7 +151,7 @@
                 <li>
                     <a class="nav-link" href="#">이벤트</a>
                     <ul class="submenu">
-                        <li><a href="preEv.jsp">진행중 이벤트</a></li>
+                        <li><a href="preEv.jsp">진행 중인 이벤트</a></li>
                         <li><a href="winningEv.jsp">당첨자 발표</a></li>
                         <li><a href="lastEv.jsp">지난 이벤트</a></li>
                     </ul>

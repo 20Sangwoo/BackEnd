@@ -12,7 +12,6 @@
 <body>
 	<%@include file="mainBar.jsp" %>
 
-<!-- 나머지 내용 -->
 <div class="blackC">
 <br><br>
     <h1>개봉 예정 영화</h1>

@@ -14,7 +14,7 @@ int lastNum;
 int p = 1;
 
 BoardDAO dao = new BoardDAO();
-int count = dao.getNCount();
+int count = dao.getQACount();
 
 // 현재 페이지 번호 확보
 if(page_ != null && !page_.equals("")) {
@@ -26,7 +26,7 @@ startNum = p - (p-1) % numOfPages;
 
 // lastNum
 lastNum = (int)Math.ceil((double)count / numOfRecords);
-ArrayList<BoardDTO> dtos = dao.noticeList(p, numOfRecords);
+ArrayList<BoardDTO> dtos = dao.QAList(p, numOfRecords);
 
 
 %>
@@ -52,7 +52,7 @@ ArrayList<BoardDTO> dtos = dao.noticeList(p, numOfRecords);
 
 <div class=blackC style="height: 1000px;">
 	<div class="container"><br>
-		<h1 class="text-center font-weight-bold">공지사항</h1><br>
+		<h1 class="text-center font-weight-bold">Q&A 게시판</h1><br>
 		<div class="container">
 		<div class="row">
 			<form method="post" name="search" action="searchPost.jsp">
@@ -75,8 +75,8 @@ ArrayList<BoardDTO> dtos = dao.noticeList(p, numOfRecords);
 		<table class="table table-hover">
 			<thead>
 			<tr>
-				<th>제목</th>
-				<th>작성자</th>
+				<th style="width:30%">제목</th>
+				<th style="width:10%">작성자</th>
 				<th>날짜</th>
 				<th>조회</th>
 			</tr>
@@ -96,11 +96,10 @@ ArrayList<BoardDTO> dtos = dao.noticeList(p, numOfRecords);
         	</tbody>
 		</table>
 		<div style="float: right;">
-			<button type="button" class="btn btn-light" onClick="location.href='noticeForm.jsp'">글 등록</button>
+			<button type="button" class="btn btn-light" onClick="location.href='qaForm.jsp'">글 등록</button>
 		</div>
 	</div>
-
-		<br>
+	
 		<br>
 	<!-- 페이지네이션 -->
 	<div class="d-flex justify-content-center">                 
@@ -115,7 +114,7 @@ ArrayList<BoardDTO> dtos = dao.noticeList(p, numOfRecords);
         	<!-- 페이지 번호 -->
         	<% for(int i = 0; i < numOfPages; i++) {
         		if(startNum + i <= lastNum) { %> 
-        	<li class="page-item"><a class="page-link" href="noticeList.jsp?page=<%= startNum + i %>"><%= startNum + i %></a></li>
+        	<li class="page-item"><a class="page-link" href="qaList.jsp?page=<%= startNum + i %>"><%= startNum + i %></a></li>
         	<% } } %>
         
         	<!-- next -->
