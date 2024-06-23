@@ -21,54 +21,7 @@
   text-align: center; /* 내용 중앙 정렬 */
 }
 
-/* 테이블 스타일 */
-table {
-  width: 100%; /* 테이블 너비는 부모 요소의 100% */
-  border-collapse: collapse; /* 테두리가 겹치지 않도록 설정 */
-  margin-top: 30px; /* 위쪽 여백 30px */
-}
 
-th, td {
-  padding: 10px; /* 셀 안의 콘텐츠와 테두리 사이의 간격 */
-  text-align: center; /* 셀 안의 텍스트 가운데 정렬 */
-}
-
-th {
-  background-color: #f8f8f8; /* 테이블 헤더 배경색 */
-}
-
-.seat-plan {
-  width: 80%; /* 좌석 선택 플랜의 너비 */
-  max-width: 600px; /* 최대 너비 600px */
-  background-color: white; /* 배경색은 흰색 */
-  padding: 20px; /* 안쪽 여백 */
-  border-radius: 8px; /* 테두리 반경 */
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
-  margin-left: 60px;
-}
-
-.seat-row {
-  display: flex; /* 좌석 행을 플렉스박스로 표시 */
-  justify-content: center; /* 가로축 중앙 정렬 */
-  margin-bottom: 10px; /* 아래쪽 여백 10px */
-}
-
-.seat {
-  width: 30px; /* 좌석 너비 */
-  height: 30px; /* 좌석 높이 */
-  margin: 5px; /* 좌석 간의 간격 */
-  background-color: #e6e6e6; /* 배경색 */
-  border: 1px solid #ccc; /* 테두리 */
-  border-radius: 5px; /* 테두리 반경 */
-  text-align: center; /* 텍스트 가운데 정렬 */
-  line-height: 30px; /* 행 높이와 같게 */
-  cursor: pointer; /* 마우스 커서 모양 */
-}
-
-.seat.selected {
-  background-color: #007bff; /* 선택된 좌석 배경색 */
-  color: white; /* 선택된 좌석 텍스트 색상 */
-}
 
 .btn-tiket {
   margin-top: 20px; /* 위쪽 여백 20px */
