@@ -13,7 +13,7 @@
   	    <link href="../Main/main.css" rel="stylesheet">
 </head>
 <body>
-	<%@ include file="../Main/mainBar.jsp" %>
+	<%@ include file="../main/mainBar.jsp" %>
 	
 	<%
       HttpSession sessionss = request.getSession();
@@ -26,7 +26,7 @@
       <div class="col-md-10 offset-md-1">
         <div class="card">
           <div class="card-body">
-            <h5 class="card-title">게시글 작성</h5>
+            <h5 class="card-title">게시글 수정</h5>
             <form action="noticePro.jsp" method="POST">
               <div class="form-group" >
                 <label for="author">작성자</label>
