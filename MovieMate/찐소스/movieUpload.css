@@ -1,0 +1,21 @@
+@charset "UTF-8";
+
+.container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 80vh;
+	background-color:  #f0f0f0;
+}
+
+.movieUpload {
+	background-color: white;
+	padding: 30px;
+	border-radius: 120px;
+	box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
+	width: 100%;
+	max-width: 600px;
+	height: auto;
+	text-align: center;
+}
+
