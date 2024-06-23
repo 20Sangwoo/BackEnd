@@ -4,10 +4,9 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>Insert title here</title>
+  <title>영화는Moviemate</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
 </head>
 <body>
 
@@ -28,7 +27,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-4">
-                    <img src="./img/crimectiy.png" class="img-fluid" alt="영화 포스터 2">
+                    <img src="./img/crimectiy.png" class="img-fluid" >
                 </div>
                 <div class="col-md-8">
                     <h5>범죄도시4</h5>
@@ -76,15 +75,22 @@
 
       <!-- Modal footer -->
       <div class="modal-footer">
-         <button id="watchTrailerButton" type="button" class="btn btn-danger">예고편 보러가기</button>
+         <button id="btn_youtube" type="button" class="btn btn-danger">예고편 보러가기</button>
+         <button id="btn_main"    type="button" class="btn btn-danger">예매하기</button>
       </div>
 
 
-	<script>
-  // JavaScript 코드
-    document.getElementById('watchTrailerButton').addEventListener('click', function() {
-    // 예고편 보러가기 버튼을 클릭했을 때 실행할 동작
-    window.location.href = 'https://www.youtube.com/watch?v=EsGwHQQ_NOI'; // 이동할 페이지의 URL을 여기에 입력하세요
+<script>
+  // 예고편 보러가기 버튼을 클릭했을 때 
+  document.getElementById('btn_youtube').addEventListener('click', function() {
+  // 예고편 영상 페이지로 
+    window.location.href = 'https://www.youtube.com/watch?v=EsGwHQQ_NOI';
+  });
+
+  // 예매하기 버튼을 클릭했을 때
+  document.getElementById('btn_main').addEventListener('click', function() {
+    // 예매 페이지로
+    window.location.href = 'tiket.jsp';
   });
 </script>
 
